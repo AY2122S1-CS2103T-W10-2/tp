@@ -57,6 +57,8 @@ Adds a student to the TeachBook.
 
 Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [b/BLOOD_TYPE] [pc/PARENTS_CONTACT] [t/TAG1] [t/TAG2]...`
 
+![add](images/addStudent.png)
+
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 A student can have any number of tags (including 0)
 </div>
@@ -83,6 +85,8 @@ Examples:
 * `list all` followed by `delete 2` deletes the 2nd student in the TeachBook.
 * `find John` followed by `delete 1` deletes the 1st student in the results of the `find` command.
 
+![delete](images/deleteStudent.png)
+
 ### Editing a student : `edit`
 
 Edits an existing student in the TeachBook. You can also use this command to add previously not-added information.
@@ -93,6 +97,8 @@ Format: `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG1] [t/
 * The index refers to the index number shown in the displayed student list.
 * The index must be a positive integer 1, 2, 3, ...
 * Existing values will be updated to the input values.
+
+![edit](images/editStudent.png)
 
 Examples:
 * `edit 1 p/91234567 e/johndoe@example.com` edits the phone number and email address of the 1st student to be `91234567` and `johndoe@example.com` respectively.
@@ -119,7 +125,9 @@ Adds a class with the specified class name to the TeachBook.
 Format: `addClass CLASS_NAME`
 
 Examples:
-* `addClass A`
+* `addClass example`
+
+![add class](images/addClass.png)
 
 ### Deleting a class : `deleteClass`
 
@@ -131,6 +139,8 @@ Format: `deleteClass CLASS_NAME`
 
 Examples:
 * `deleteClass A` Deletes the class named `A` from the TeachBook.
+
+![delete class](images/deleteClass.png)
 
 ### Editing a class : `editClass`
 
@@ -156,6 +166,8 @@ Format: `list`  `list all`  `list absentee`
 * `list all` lists all students in the TeachBook.
 * `list absentee` lists all students from the currently selected class or the entire TeachBook whose status is unmarked.
 
+![list all](images/listAll.png)
+
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 `list all` clears any currently selected class. As a result, any command followed by `list all` will be operating on all students in the TeachBook.
 </div>
@@ -176,6 +188,8 @@ Examples:
 * `find John Doe` returns only one `John Doe` from the currently selected class, even though there is another `John Doe` from a different class.
 * `list all` followed by `find John Doe` returns two `John Doe`, assuming that there are two `John Doe` in the entire the TeachBook, one from class `A` and another one from class `B`.
 
+![find](images/findStudent.png)
+
 ### Printing to Excel : `print`
 
 Prints a student list of current selected class with customized columns.
@@ -184,6 +198,7 @@ Format: `print c/COLUMN1 [c/COLUMN2] ...`
 
 * First Column is the names of students in currently selected class.
 * Column represents column headers in the Excel file.
+* Columns that requires 
 
 Examples:
 * `print c/Signature` Creates an Excel (.xls) file with a student name column and Signature column
@@ -193,6 +208,8 @@ Examples:
 Clears all classes and students from the TeachBook.
 
 Format: `clear`
+
+![clear](images/clear.png)
 
 ### Exiting the program : `exit`
 
