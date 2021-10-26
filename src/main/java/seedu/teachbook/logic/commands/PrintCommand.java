@@ -81,7 +81,6 @@ public class PrintCommand extends Command {
             for (Student student : studentList) {
                 result.add(student.getAddress().value);
             }
-
             break;
 
         case "tags":
@@ -145,7 +144,7 @@ public class PrintCommand extends Command {
             throw new CommandException(MESSAGE_EXCEL_OPEN);
         }
 
-        return new CommandResult(MESSAGE_SUCCESS, false, false, false, false,false);
+        return new CommandResult(MESSAGE_SUCCESS, false, false, false, false, false);
     }
 
     @Override
