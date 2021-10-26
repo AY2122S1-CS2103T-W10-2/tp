@@ -24,7 +24,8 @@ public class UndoCommand extends Command {
 
         model.undoTeachBook();
         model.updateCurrentlySelectedClass(model.getCurrentlySelectedClassIndex());
-        return new CommandResult(MESSAGE_SUCCESS, false, false, true, true);
+        // TODO: Check if this showClass should be set to false
+        return new CommandResult(MESSAGE_SUCCESS, false, false, true, true, false);
     }
 
 }

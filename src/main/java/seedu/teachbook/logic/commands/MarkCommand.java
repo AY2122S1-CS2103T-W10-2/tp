@@ -84,7 +84,7 @@ public class MarkCommand extends Command {
         return new CommandResult(String.format(MESSAGE_MARK_STUDENT_SUCCESS,
                 String.join(", ", studentToMarkNames),
                 now.format(DateTimeFormatter.ofPattern("dd MMM yyyy hh:mm a", Locale.ENGLISH))),
-                false, false, true, false);
+                false, false, true, false, false);
     }
 
     @Override

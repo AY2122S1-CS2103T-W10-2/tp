@@ -48,7 +48,7 @@ public class SelectClassCommand extends Command {
         model.updateCurrentlySelectedClass(newClassIndex);
         model.commitTeachBook();
         return new CommandResult(String.format(MESSAGE_SELECT_CLASS_SUCCESS, newClassName),
-                false, false, true, true);
+                false, false, true, true, false);
     }
 
     @Override

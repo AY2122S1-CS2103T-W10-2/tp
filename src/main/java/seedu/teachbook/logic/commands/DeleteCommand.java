@@ -72,7 +72,7 @@ public class DeleteCommand extends Command {
         model.commitTeachBook();
         return new CommandResult(String.format(MESSAGE_DELETE_STUDENT_SUCCESS,
                 String.join("\n", studentToDeleteDescriptions)),
-                false, false, true, false);
+                false, false, true, false, false);
     }
 
     @Override

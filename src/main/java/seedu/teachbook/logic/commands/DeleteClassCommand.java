@@ -48,7 +48,7 @@ public class DeleteClassCommand extends Command {
         model.deleteClass(classToDelete);
         model.commitTeachBook();
         return new CommandResult(String.format(MESSAGE_DELETE_CLASS_SUCCESS, classToDelete),
-                false, false, true, true);
+                false, false, true, true, false);
     }
 
     @Override

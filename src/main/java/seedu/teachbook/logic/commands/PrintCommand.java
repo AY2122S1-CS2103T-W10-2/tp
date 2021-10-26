@@ -138,7 +138,7 @@ public class PrintCommand extends Command {
 
         ExcelUtil.toExcel(toPrint);
 
-        return new CommandResult(MESSAGE_SUCCESS, false, false, false, false);
+        return new CommandResult(MESSAGE_SUCCESS, false, false, false, false,false);
     }
 
     @Override

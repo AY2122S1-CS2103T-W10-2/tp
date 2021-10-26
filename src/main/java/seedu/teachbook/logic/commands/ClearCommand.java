@@ -20,6 +20,6 @@ public class ClearCommand extends Command {
             model.setTeachBook(new TeachBook());
             model.commitTeachBook();
         }
-        return new CommandResult(MESSAGE_SUCCESS, false, false, true, true);
+        return new CommandResult(MESSAGE_SUCCESS, false, false, true, true, false);
     }
 }

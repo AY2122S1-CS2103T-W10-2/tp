@@ -23,16 +23,19 @@ public class CommandResult {
     /** The UI studentListPanel should be refreshed. */
     private final boolean updateStudentListPanel;
 
+    private final boolean showClass;
+
     /**
      * Constructs a {@code CommandResult} with the specified fields.
      */
     public CommandResult(String feedbackToUser, boolean showHelp, boolean exit,
-                         boolean updateClassListPanel, boolean updateStudentListPanel) {
+                         boolean updateClassListPanel, boolean updateStudentListPanel, boolean showClass) {
         this.feedbackToUser = requireNonNull(feedbackToUser);
         this.showHelp = showHelp;
         this.exit = exit;
         this.updateClassListPanel = updateClassListPanel;
         this.updateStudentListPanel = updateStudentListPanel;
+        this.showClass = showClass;
     }
 
     /**
@@ -40,7 +43,7 @@ public class CommandResult {
      * and other fields set to their default value.
      */
     public CommandResult(String feedbackToUser) {
-        this(feedbackToUser, false, false, false, false);
+        this(feedbackToUser, false, false, false, false, false);
     }
 
     public String getFeedbackToUser() {
@@ -61,6 +64,10 @@ public class CommandResult {
 
     public boolean isUpdateStudentListPanel() {
         return updateStudentListPanel;
+    }
+
+    public boolean showClass() {
+        return showClass;
     }
 
     @Override

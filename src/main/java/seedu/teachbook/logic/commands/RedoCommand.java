@@ -24,8 +24,9 @@ public class RedoCommand extends Command {
 
         model.redoTeachBook();
         model.updateCurrentlySelectedClass(model.getCurrentlySelectedClassIndex());
+        // TODO: Check if this showClass should be set to false
         return new CommandResult(MESSAGE_SUCCESS, false, false,
-                true, true);
+                true, true, false);
     }
 
 }

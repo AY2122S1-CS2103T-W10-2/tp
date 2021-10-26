@@ -48,7 +48,8 @@ public class ListCommand extends Command {
             }
             model.updateCurrentlySelectedClass(INDEX_LIST_ALL);
             model.commitTeachBook();
-            return new CommandResult(MESSAGE_SUCCESS, false, false, true, true);
+            // TODO: Important change by setting showClass to true
+            return new CommandResult(MESSAGE_SUCCESS, false, false, true, true, true);
         }
 
         if (isAbsentee) {

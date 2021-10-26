@@ -83,7 +83,7 @@ public class UnmarkCommand extends Command {
         return new CommandResult(String.format(MESSAGE_UNMARK_STUDENT_SUCCESS,
                 String.join(", ", studentToUnmarkNames),
                 now.format(DateTimeFormatter.ofPattern("dd MMM yyyy hh:mm a", Locale.ENGLISH))),
-                false, false, true, false);
+                false, false, true, false, false);
     }
 
     @Override

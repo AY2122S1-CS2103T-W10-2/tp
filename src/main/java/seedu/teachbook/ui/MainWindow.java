@@ -118,7 +118,7 @@ public class MainWindow extends UiPart<Stage> {
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
-        updateStudentListPanel();
+        updateStudentListPanel(false);
 
         updateClassListPanel();
 
@@ -132,8 +132,9 @@ public class MainWindow extends UiPart<Stage> {
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
     }
 
-    void updateStudentListPanel() {
-        personListPanel = new PersonListPanel(logic.getFilteredPersonList());
+    // TODO: Check this
+    void updateStudentListPanel(boolean showClass) {
+        personListPanel = new PersonListPanel(logic.getFilteredPersonList(), showClass);
         personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
     }
 
@@ -180,8 +181,9 @@ public class MainWindow extends UiPart<Stage> {
         updateClassListPanel();
     }
 
-    public void handleUpdateStudentListPanel() {
-        updateStudentListPanel();
+    // TODO: Check this. This is the the place that controls
+    public void handleUpdateStudentListPanel(boolean showClass) {
+        updateStudentListPanel(showClass);
     }
 
     /**
@@ -220,7 +222,11 @@ public class MainWindow extends UiPart<Stage> {
             }
 
             if (commandResult.isUpdateStudentListPanel()) {
-                handleUpdateStudentListPanel();
+                handleUpdateStudentListPanel(false);
+            }
+
+            if (commandResult.showClass()) {
+                handleUpdateStudentListPanel(true);
             }
 
             return commandResult;

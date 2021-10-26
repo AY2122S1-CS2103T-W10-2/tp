@@ -42,7 +42,7 @@ public class AddClassCommand extends Command {
         model.addClass(toAdd);
         model.commitTeachBook();
         return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd), false, false,
-                true, true);
+                true, true, false);
     }
 
     @Override

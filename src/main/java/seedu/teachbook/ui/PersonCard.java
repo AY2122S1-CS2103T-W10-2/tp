@@ -8,6 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
+import seedu.teachbook.logic.commands.ListCommand;
 import seedu.teachbook.model.student.Student;
 
 /**
@@ -26,6 +27,8 @@ public class PersonCard extends UiPart<Region> {
      */
 
     public final Student student;
+
+    private boolean showClass;
 
     @FXML
     private HBox cardPane;
@@ -55,9 +58,10 @@ public class PersonCard extends UiPart<Region> {
     /**
      * Creates a {@code PersonCode} with the given {@code Person} and index to display.
      */
-    public PersonCard(Student student, int displayedIndex) {
+    public PersonCard(Student student, int displayedIndex, boolean showClass) {
         super(FXML);
         this.student = student;
+        this.showClass = showClass;
         id.setText(displayedIndex + ". ");
         name.setText(student.getName().fullName);
         phone.setText(student.getPhone().value);
@@ -92,13 +96,13 @@ public class PersonCard extends UiPart<Region> {
         }
 
         // TODO: Set the condition to check if it is a list command
-        if (false) {
+        if (showClass) {
+            className.setText(student.getStudentClass().toString());
+        } else {
             className.setMinHeight(0.0);
             className.setPrefHeight(0.0);
             classLabel.setMinHeight(0.0);
             classLabel.setPrefHeight(0.0);
-        } else {
-            className.setText(student.getStudentClass().toString());
         }
     }
 
@@ -122,5 +126,13 @@ public class PersonCard extends UiPart<Region> {
 
     public void markCheckbox() {
         checkBox.setSelected(true);
+    }
+
+    public void showClass() {
+        this.showClass = true;
+    }
+
+    public void unshowClass() {
+        this.showClass = false;
     }
 }
