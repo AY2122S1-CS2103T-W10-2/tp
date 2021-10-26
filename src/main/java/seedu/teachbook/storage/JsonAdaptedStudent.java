@@ -1,6 +1,7 @@
 package seedu.teachbook.storage;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -130,10 +131,15 @@ class JsonAdaptedStudent {
         if (attendance == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Remark.class.getSimpleName()));
         }
-        String[] attendanceComponents = attendance.split(" ");
-        assert attendanceComponents.length == 2;
-        boolean isPresent = attendanceComponents[0].equals("Present");
-        LocalDateTime lastModified = LocalDateTime.parse(attendanceComponents[1]);
+        boolean isPresent;
+        LocalDateTime lastModified;
+        try {
+            String[] attendanceComponents = attendance.split(" ");
+            isPresent = attendanceComponents[0].equals("Present");
+            lastModified = LocalDateTime.parse(attendanceComponents[1]);
+        } catch (DateTimeParseException exception) {
+            throw new IllegalValueException(Attendance.MESSAGE_CONSTRAINTS);
+        }
         final Attendance modelAttendance = new Attendance(isPresent, lastModified);
 
         final Grade modelGrade = new Grade(grade);

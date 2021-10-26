@@ -10,6 +10,10 @@ import java.util.Objects;
  */
 public class Attendance {
 
+    public static final String MESSAGE_CONSTRAINTS =
+            "Attendance should contain either the word 'Present' or 'Absent', followed by a whitespace, "
+                    + "followed by a datetime in the system clock format e.g., Present 2021-10-25T20:21:03.184652600,"
+                    + "Absent 2021-10-25T20:21:03.186648100";
     public final boolean isPresent;
     public final LocalDateTime lastModified;
 
