@@ -42,6 +42,8 @@ public class PrintCommand extends Command {
             + PREFIX_COLUMN + "Sign Here";
 
     public static final String MESSAGE_SUCCESS = "Excel file generated!";
+    public static final String MESSAGE_EXCEL_OPEN = "Print failed! An Excel file with conflicting name is opened, "
+            + "please close it before using print command!";
 
     private final List<String> columnList;
 
@@ -136,7 +138,11 @@ public class PrintCommand extends Command {
             toPrint.add(generateColumn(columnName, studentList));
         }
 
-        ExcelUtil.toExcel(toPrint);
+        try {
+            ExcelUtil.toExcel(toPrint);
+        } catch (RuntimeException ex) {
+            throw new CommandException(MESSAGE_EXCEL_OPEN);
+        }
 
         return new CommandResult(MESSAGE_SUCCESS, false, false, false, false,false);
     }

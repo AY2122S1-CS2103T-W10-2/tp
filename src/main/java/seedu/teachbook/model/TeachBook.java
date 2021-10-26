@@ -249,7 +249,9 @@ public class TeachBook implements ReadOnlyTeachBook {
     public void setClassName(GeneralIndex classIndex, ClassName updatedClassName) {
         Class target = getClassAtIndex(classIndex);
         Class editedClass = new Class(updatedClassName);
-        editedClass.setStudentsOfThisClass(target.getUniqueStudentListOfThisClass());
+        UniqueStudentList newStudentList = target.getUniqueStudentListOfThisClass();
+        newStudentList.forEach(student -> student.setStudentClass(editedClass));
+        editedClass.setStudentsOfThisClass(newStudentList);
         setClass(target, editedClass);
     }
 

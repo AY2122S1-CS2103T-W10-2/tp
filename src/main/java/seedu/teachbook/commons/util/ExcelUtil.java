@@ -1,7 +1,10 @@
 package seedu.teachbook.commons.util;
 
 import java.io.FileOutputStream;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Locale;
 
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
@@ -21,14 +24,13 @@ public class ExcelUtil {
         return headerFont;
     }
 
-    public static void toExcel(List<List<String>> listOfColumns) {
+    public static void toExcel(List<List<String>> listOfColumns) throws RuntimeException {
         try {
             Workbook workbook = new HSSFWorkbook();
             Sheet sh = workbook.createSheet("Student List");
             String[] columnHeadings = new String[listOfColumns.size() + 1];
 
             for (int i = 0; i < listOfColumns.size(); i++) {
-//                columnHeadings[i] = StringUtil.toCamelCase(listOfColumns.get(i).get(0));
                 columnHeadings[i] = listOfColumns.get(i).get(0);
             }
 
@@ -55,13 +57,15 @@ public class ExcelUtil {
             }
 
             String home = System.getProperty("user.home");
-            FileOutputStream fileOut = new FileOutputStream(home + "/Downloads/" + sh.getSheetName() + ".xls");
-            // TODO: catch exception when file is open
+            DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy kk.mm.ss", Locale.ENGLISH);
+            FileOutputStream fileOut = new FileOutputStream(String.format("%s/Downloads/%s %s.xls",
+                    home, sh.getSheetName(), LocalDateTime.now().format(format)));
+
             workbook.write(fileOut);
             fileOut.close();
 
         } catch (Exception e) {
-            e.printStackTrace();
+            throw new RuntimeException();
         }
     }
 }

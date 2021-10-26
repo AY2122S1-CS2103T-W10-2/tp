@@ -1,6 +1,7 @@
 package seedu.teachbook.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.teachbook.model.Model.PREDICATE_SHOW_ALL_STUDENTS;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -79,6 +80,8 @@ public class MarkCommand extends Command {
             model.setStudent(studentToMark, editedStudent);
         }
         Collections.reverse(studentToMarkNames);
+
+        model.updateFilteredStudentList(PREDICATE_SHOW_ALL_STUDENTS);
 
         model.commitTeachBook();
         return new CommandResult(String.format(MESSAGE_MARK_STUDENT_SUCCESS,
