@@ -81,6 +81,7 @@ public class PrintCommand extends Command {
             for (Student student : studentList) {
                 result.add(student.getAddress().value);
             }
+
             break;
 
         case "tags":
